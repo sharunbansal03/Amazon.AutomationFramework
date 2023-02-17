@@ -23,8 +23,7 @@ public class ListenerImplementationClass extends ExtentManagerUtility implements
 	public void onTestStart(ITestResult result) {
 		System.out.println("inside on test start");
 		String methodName = result.getMethod().getMethodName();
-		ExtentTest test = report.createTest(methodName);
-		extentTest.set(test);
+		extentTest.set(report.createTest(methodName));
 		extentTest.get().log(Status.INFO, "Test Execution Started: " + methodName);
 	}
 
