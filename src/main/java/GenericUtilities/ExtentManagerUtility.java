@@ -7,8 +7,8 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 public class ExtentManagerUtility {
 	static ExtentSparkReporter htmlReport;
 	static ExtentReports report;
-	
-	public static void setUpExtentReport() {
+
+	public static synchronized void setUpExtentReport() {
 		JavaUtility jUtils = new JavaUtility();
 		String reportPath = ".\\ExtentReports\\Report_" + jUtils.getSystemDataAndTimeInFormat() + ".html";
 		htmlReport = new ExtentSparkReporter(reportPath);
@@ -21,8 +21,8 @@ public class ExtentManagerUtility {
 		report.setSystemInfo("Base url", "https://www.amazon.in/");
 		report.setSystemInfo("Reporter name", "sharun");
 	}
-	
-	public static void endReport() {
+
+	public static synchronized void endReport() {
 		report.flush();
 	}
 
