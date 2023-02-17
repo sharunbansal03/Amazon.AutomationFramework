@@ -28,7 +28,7 @@ public class ListenerImplementationClass extends ExtentManagerUtility implements
 	}
 
 	public void onTestSuccess(ITestResult result) {
-		//extentTest.get().log(Status.PASS, "Test passed: " + result.getMethod().getMethodName());
+		extentTest.get().log(Status.PASS, "Test passed: " + result.getMethod().getMethodName());
 	}
 
 	public void onTestFailure(ITestResult result) {
