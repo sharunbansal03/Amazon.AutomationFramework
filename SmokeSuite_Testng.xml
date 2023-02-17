@@ -8,14 +8,14 @@
 		</run>
 	</groups>
 
-	<test thread-count="5" parallel="tests" name="SearchProductsTest">
+	<test name="SearchProductsTest">
 		<classes>
 			<class
 				name="amazon.SearchProducts.TestScripts.SearchProductTest" />
 		</classes>
 	</test> <!-- Test -->
 
-	<test thread-count="5" parallel="tests" name="PlaceOrderTest">
+	<test name="PlaceOrderTest">
 		<classes>
 			<class
 				name="amazon.PlaceOrder.TestScripts.AddProductToCartTest" />

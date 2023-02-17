@@ -77,7 +77,6 @@ public class ListenerImplementationClass extends ExtentManagerUtility implements
 	}
 
 	public void onFinish(ITestContext context) {
-		report.flush();
 	}
 
 }
