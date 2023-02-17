@@ -17,19 +17,19 @@ import com.aventstack.extentreports.Status;
  */
 public class ListenerImplementationClass extends ExtentManagerUtility implements ITestListener {
 
-	ExtentTest test;
+	
 	private static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
 
 	public void onTestStart(ITestResult result) {
 		System.out.println("inside on test start");
 		String methodName = result.getMethod().getMethodName();
-		test = report.createTest(methodName);
+		ExtentTest test = report.createTest(methodName);
 		extentTest.set(test);
 		extentTest.get().log(Status.INFO, "Test Execution Started: " + methodName);
 	}
 
 	public void onTestSuccess(ITestResult result) {
-		extentTest.get().log(Status.PASS, "Test passed: " + result.getMethod().getMethodName());
+		//extentTest.get().log(Status.PASS, "Test passed: " + result.getMethod().getMethodName());
 	}
 
 	public void onTestFailure(ITestResult result) {

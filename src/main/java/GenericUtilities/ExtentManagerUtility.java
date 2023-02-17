@@ -23,6 +23,5 @@ public class ExtentManagerUtility {
 
 	public static void endReport() {
 		report.flush();
-		
 	}
 }
