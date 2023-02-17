@@ -5,8 +5,8 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 public class ExtentManagerUtility {
-	public static ExtentSparkReporter htmlReport;
-	public static ExtentReports report;
+	static ExtentSparkReporter htmlReport;
+	static ExtentReports report;
 	
 	public static void setUpExtentReport() {
 		JavaUtility jUtils = new JavaUtility();
