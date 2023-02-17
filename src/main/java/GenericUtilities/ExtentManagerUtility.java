@@ -8,7 +8,7 @@ public class ExtentManagerUtility {
 	static ExtentSparkReporter htmlReport;
 	static ExtentReports report;
 
-	public static synchronized void setUpExtentReport() {
+	public static void setUpExtentReport() {
 		JavaUtility jUtils = new JavaUtility();
 		String reportPath = ".\\ExtentReports\\Report_" + jUtils.getSystemDataAndTimeInFormat() + ".html";
 		htmlReport = new ExtentSparkReporter(reportPath);
@@ -22,8 +22,8 @@ public class ExtentManagerUtility {
 		report.setSystemInfo("Reporter name", "sharun");
 	}
 
-	public static synchronized void endReport() {
-		report.flush();
+	public static void endReport() {
+		//report.flush();
 	}
 
 }
