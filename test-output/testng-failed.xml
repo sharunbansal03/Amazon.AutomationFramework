@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" parallel="tests" name="UserAccountAndListsTest(failed)">
+    <classes>
+      <class name="amazon.UserAccountAndLists.TestScripts.LoginToApplicationTest">
+        <methods>
+          <include name="bcConfig"/>
+          <include name="acConfig"/>
+          <include name="bsConfig"/>
+          <include name="asConfig"/>
+          <include name="loginIntoAppTest"/>
+          <include name="amConfig"/>
+          <include name="bmConfig"/>
+        </methods>
+      </class> <!-- amazon.UserAccountAndLists.TestScripts.LoginToApplicationTest -->
+    </classes>
+  </test> <!-- UserAccountAndListsTest(failed) -->
+  <test thread-count="5" parallel="tests" name="SearchProductsTest(failed)">
+    <classes>
+      <class name="amazon.SearchProducts.TestScripts.AvailableSearchCategoriesTest">
+        <methods>
+          <include name="bcConfig"/>
+          <include name="acConfig"/>
+          <include name="availableCategoriesTest"/>
+          <include name="bsConfig"/>
+          <include name="asConfig"/>
+          <include name="amConfig"/>
+          <include name="bmConfig"/>
+        </methods>
+      </class> <!-- amazon.SearchProducts.TestScripts.AvailableSearchCategoriesTest -->
+    </classes>
+  </test> <!-- SearchProductsTest(failed) -->
+</suite> <!-- Failed suite [Suite] -->

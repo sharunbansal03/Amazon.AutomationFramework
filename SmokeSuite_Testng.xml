@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="tests" thread-count="5" name="Suite">
+
+	<groups>
+		<run>
+			<include name="SmokeSuite" />
+		</run>
+	</groups>
+
+	<test thread-count="5" parallel="tests" name="SearchProductsTest">
+		<classes>
+			<class
+				name="amazon.SearchProducts.TestScripts.SearchProductTest" />
+		</classes>
+	</test> <!-- Test -->
+
+	<test thread-count="5" parallel="tests" name="PlaceOrderTest">
+		<classes>
+			<class
+				name="amazon.PlaceOrder.TestScripts.AddProductToCartTest" />
+		</classes>
+	</test> <!-- Test -->
+
+</suite> <!-- Suite -->

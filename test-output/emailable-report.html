@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "https://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>TestNG Report</title>
+<style type="text/css">table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}th,td {border:1px solid #009;padding:.25em .5em}th {vertical-align:bottom}td {vertical-align:top}table a {font-weight:bold}.stripe td {background-color: #E6EBF9}.num {text-align:right}.passedodd td {background-color: #3F3}.passedeven td {background-color: #0A0}.skippedodd td {background-color: #DDD}.skippedeven td {background-color: #CCC}.failedodd td,.attn {background-color: #F33}.failedeven td,.stripe .attn {background-color: #D00}.stacktrace {white-space:pre;font-family:monospace}.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}.invisible {display:none}</style>
+</head>
+<body>
+<table>
+<tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
+<tr><th colspan="8">Suite</th></tr>
+<tr><td><a href="#t0">UserAccountAndListsTest</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">231,315</td><td></td><td></td></tr>
+<tr class="stripe"><td><a href="#t1">PlaceOrderTest</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">286,929</td><td></td><td></td></tr>
+<tr><td><a href="#t2">SearchProductsTest</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">378,905</td><td></td><td></td></tr>
+<tr><th>Total</th><th class="num">2</th><th class="num">0</th><th class="num">0</th><th class="num attn">2</th><th class="num">897,149</th><th colspan="2"></th></tr>
+</table>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">UserAccountAndListsTest &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">amazon.UserAccountAndLists.TestScripts.LoginToApplicationTest</td><td><a href="#m0">loginIntoAppTest</a></td><td rowspan="1">1676654220881</td><td rowspan="1">2319</td></tr></tbody>
+<tbody id="t1"><tr><th colspan="4">PlaceOrderTest &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">amazon.PlaceOrder.TestScripts.AddProductToCartTest</td><td><a href="#m1">addProductToCartTest</a></td><td rowspan="1">1676654162483</td><td rowspan="1">133471</td></tr></tbody>
+<tbody id="t2"><tr><th colspan="4">SearchProductsTest &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">amazon.SearchProducts.TestScripts.AvailableSearchCategoriesTest</td><td><a href="#m2">availableCategoriesTest</a></td><td rowspan="1">1676654166163</td><td rowspan="1">67403</td></tr><tr><th colspan="4">SearchProductsTest &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">amazon.SearchProducts.TestScripts.SearchProductTest</td><td><a href="#m3">searchProductTest</a></td><td rowspan="1">1676654351582</td><td rowspan="1">54312</td></tr></tbody>
+</table>
+<h2>UserAccountAndListsTest</h2><h3 id="m0">amazon.UserAccountAndLists.TestScripts.LoginToApplicationTest#loginIntoAppTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: [ASSERTION FAILED]: Sign in unsuccessful expected [true] but found [false]
+	at amazon.UserAccountAndLists.TestScripts.LoginToApplicationTest.loginIntoAppTest(LoginToApplicationTest.java:21)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+... Removed 21 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>PlaceOrderTest</h2><h3 id="m1">amazon.PlaceOrder.TestScripts.AddProductToCartTest#addProductToCartTest</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">[Step]: Search for item: iphone 14 pro<br/>[Step]: Clicked on product titled:Apple iPhone 14 Pro 128GB Deep Purple<br/>[Step]: Clicked on 'Add to Cart' button<br/>[Step]: Clicked on 'Cart' button<br/>[Assertion Passed]: Add product to cart successful<br/>[Step]: Clicked on 'Delete' for first item in cart</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>SearchProductsTest</h2><h3 id="m2">amazon.SearchProducts.TestScripts.AvailableSearchCategoriesTest#availableCategoriesTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: [Assertion Failed]: Search categories are not correct: lists don&apos;t have the same size expected [28] but found [44]
+	at amazon.SearchProducts.TestScripts.AvailableSearchCategoriesTest.availableCategoriesTest(AvailableSearchCategoriesTest.java:25)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+... Removed 23 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">amazon.SearchProducts.TestScripts.SearchProductTest#searchProductTest</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">[Step]: Search for item: Women Winter Caps<br/>[Assertion Passed]: Search product test passed<br/>[Assertion Passed]: Search results displayed</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+</body>
+</html>
