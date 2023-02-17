@@ -76,7 +76,6 @@ public class ListenerImplementationClass extends ExtentManagerUtility implements
 	}
 
 	public void onFinish(ITestContext context) {
-		extentTest.remove();
 	}
 
 }

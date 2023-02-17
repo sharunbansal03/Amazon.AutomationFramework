@@ -46,7 +46,7 @@ public class BaseClass {
 	@AfterSuite(groups = "SmokeSuite")
 	public void asConfig() {
 		System.out.println("======= Suite execution finished=============");
-		ExtentManagerUtility.endReport();
+		//ExtentManagerUtility.endReport();
 	}
 
 	/**
@@ -101,6 +101,7 @@ public class BaseClass {
 	public void amConfig() {
 		HomePage hp = new HomePage(driver);
 		hp.logoutOfApplication(driver);
+		ExtentManagerUtility.flushReport();
 	}
 
 	/**

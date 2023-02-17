@@ -6,7 +6,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 
 public class ExtentManagerUtility {
 	 
-	static final ExtentReports report = new ExtentReports();
+	static ExtentReports report;
 
 	public static ExtentReports setUpExtentReport() {
 		JavaUtility jUtils = new JavaUtility();
@@ -15,13 +15,15 @@ public class ExtentManagerUtility {
 		htmlReport.config().setDocumentTitle("Amazon Execution Report");
 		htmlReport.config().setReportName("Execution report");
 		htmlReport.config().setTheme(Theme.DARK);
+		
+		report = new ExtentReports();
 		report.attachReporter(htmlReport);
 		report.setSystemInfo("Base url", "https://www.amazon.in/");
 		report.setSystemInfo("Reporter name", "sharun");
 		return report;
 	}
 
-	public static void endReport() {
+	public static void flushReport() {
 		report.flush();
 	}
 }
