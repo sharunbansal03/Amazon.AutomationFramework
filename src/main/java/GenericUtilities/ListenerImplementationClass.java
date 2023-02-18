@@ -15,52 +15,135 @@ import com.aventstack.extentreports.Status;
  * @author sharu
  *
  */
-public class ListenerImplementationClass extends ExtentManagerUtility implements ITestListener {
+public class ListenerImplementationClass implements ITestListener {
 
-	
-	ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
+	/**
+	 * ThreadLocal object used so that parallely executing threads cannot see the
+	 * value of each other. They can set and get different values.
+	 */
+
+	ThreadLocal<ExtentTest> extentTestThreadSafe = new ThreadLocal<ExtentTest>();
 
 	public void onTestStart(ITestResult result) {
 		String methodName = result.getMethod().getMethodName();
-		extentTest.set(report.createTest(methodName));
-		extentTest.get().log(Status.INFO, "Test Execution Started: " + methodName);
+		ExtentTest test = ExtentManagerUtility.report.createTest(methodName);
+		extentTestThreadSafe.set(test);
+		extentTestThreadSafe.get().log(Status.INFO, "Test Execution Started: " + methodName);
 	}
 
 	public void onTestSuccess(ITestResult result) {
-		extentTest.get().log(Status.PASS, "Test passed: " + result.getMethod().getMethodName());
+		extentTestThreadSafe.get().log(Status.PASS, "Test passed: " + result.getMethod().getMethodName());
 	}
 
 	public void onTestFailure(ITestResult result) {
 		JavaUtility jUtils = new JavaUtility();
-		String methodName = result.getMethod().getMethodName();
-		extentTest.get().log(Status.FAIL, "Test Script failed - " + methodName);
-		extentTest.get().log(Status.FAIL, result.getThrowable());
-
+		PropertyFileUtility pUtils = new PropertyFileUtility();
 		WebDriverUtility wUtils = new WebDriverUtility();
+		String environment = null;
 		try {
-			String path = wUtils.takeScreenshot(BaseClass.sDriver,
-					methodName + "_" + jUtils.getSystemDataAndTimeInFormat());
-			extentTest.get().addScreenCaptureFromPath(path);
+			environment = pUtils.readDataFromPropertyFile("server");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		// TODO Auto-generated method stub
+		String methodName = result.getMethod().getMethodName();
+		extentTestThreadSafe.get().log(Status.FAIL, "Test Script failed - " + methodName);
+		extentTestThreadSafe.get().log(Status.FAIL, result.getThrowable());
+
+		String screenshotName = methodName + "-" + jUtils.getSystemDataAndTimeInFormat();
+		try {
+
+			if (environment.equalsIgnoreCase("local")) {
+				/*
+				 * Captures screenshot in 'Screenshots' folder and attaches it to extent report
+				 * when executed on local system
+				 */
+				String path = wUtils.takeScreenshot(BaseClass.sDriver, screenshotName);
+				extentTestThreadSafe.get().addScreenCaptureFromPath(path);
+			} else if (environment.equalsIgnoreCase("remote")) {
+
+				/* Creates screenshot in 'Screenshots' folder of project */
+				wUtils.takeScreenshot(BaseClass.sDriver, screenshotName);
+
+				/*
+				 * Extracts name of jenkins job since System.getProperty("user.dir") when
+				 * executing from Jenkins returns local directory path like
+				 * 'C:\ProgramData\Jenkins\.jenkins\workspace\WCSM23-SmokeSuite'
+				 */
+				String jenkinsJobName = System.getProperty("user.dir")
+						.substring(System.getProperty("user.dir").lastIndexOf("\\") + 1);
+
+				/* Creates path to captured screenshot in current jenkins job's workspace */
+				String pathToScreenshotInJob = "/job/" + jenkinsJobName + "/ws/Screenshots/" + screenshotName + ".png";
+
+				/*
+				 * Attaches screenshot captured from Jenkins job's workspace to the extent
+				 * report
+				 */
+				extentTestThreadSafe.get().addScreenCaptureFromPath(pathToScreenshotInJob);
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 
 	public void onTestSkipped(ITestResult result) {
 		JavaUtility jUtils = new JavaUtility();
-		String methodName = result.getMethod().getMethodName();
-		extentTest.get().log(Status.SKIP, methodName);
-		extentTest.get().log(Status.SKIP, result.getThrowable());
+		PropertyFileUtility pUtils = new PropertyFileUtility();
+		WebDriverUtility wUtils = new WebDriverUtility();
+		String environment = null;
 		try {
-			String path = new WebDriverUtility().takeScreenshot(BaseClass.sDriver,
-					methodName + "_" + jUtils.getSystemDataAndTimeInFormat());
-			extentTest.get().addScreenCaptureFromPath(path);
+			environment = pUtils.readDataFromPropertyFile("server");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		// TODO Auto-generated method stub
+		String methodName = result.getMethod().getMethodName();
+		extentTestThreadSafe.get().log(Status.SKIP, "Test Script skipped - " + methodName);
+		extentTestThreadSafe.get().log(Status.FAIL, result.getThrowable());
+
+		String screenshotName = methodName + "-" + jUtils.getSystemDataAndTimeInFormat();
+		try {
+
+			if (environment.equalsIgnoreCase("local")) {
+				/*
+				 * Captures screenshot in 'Screenshots' folder and attaches it to extent report
+				 * when executed on local system
+				 */
+				String path = wUtils.takeScreenshot(BaseClass.sDriver, screenshotName);
+				extentTestThreadSafe.get().addScreenCaptureFromPath(path);
+			} else if (environment.equalsIgnoreCase("remote")) {
+
+				/* Creates screenshot in 'Screenshots' folder of project */
+				wUtils.takeScreenshot(BaseClass.sDriver, screenshotName);
+
+				/*
+				 * Extracts name of jenkins job since System.getProperty("user.dir") when
+				 * executing from Jenkins returns local directory path like
+				 * 'C:\ProgramData\Jenkins\.jenkins\workspace\WCSM23-SmokeSuite'
+				 */
+				String jenkinsJobName = System.getProperty("user.dir")
+						.substring(System.getProperty("user.dir").lastIndexOf("\\") + 1);
+
+				/* Creates path to captured screenshot in current jenkins job's workspace */
+				String pathToScreenshotInJob = "/job/" + jenkinsJobName + "/ws/Screenshots/" + screenshotName + ".png";
+
+				/*
+				 * Attaches screenshot captured from Jenkins job's workspace to the extent
+				 * report
+				 */
+				extentTestThreadSafe.get().addScreenCaptureFromPath(pathToScreenshotInJob);
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
