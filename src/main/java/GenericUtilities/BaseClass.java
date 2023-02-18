@@ -1,6 +1,7 @@
 package GenericUtilities;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -46,7 +47,7 @@ public class BaseClass {
 	@AfterSuite(groups = "SmokeSuite")
 	public void asConfig() {
 		System.out.println("======= Suite execution finished=============");
-		//ExtentManagerUtility.endReport();
+		ExtentManagerUtility.flushReport();
 	}
 
 	/**
@@ -84,7 +85,7 @@ public class BaseClass {
 	 * @throws IOException
 	 */
 	@BeforeMethod(groups = "SmokeSuite")
-	public void bmConfig() throws IOException {
+	public void bmConfig(Method m) throws IOException {
 		String email = pUtils.readDataFromPropertyFile("username");
 		String password = pUtils.readDataFromPropertyFile("password");
 
@@ -92,6 +93,8 @@ public class BaseClass {
 		hp.hoverAccountListDrpDownAndClickSignInBtn(driver);
 		SignInPage sp = new SignInPage(driver);
 		sp.signInToTheApplication(email, password);
+		ExtentManagerUtility.createTest(m.getName());
+		
 	}
 
 	/**

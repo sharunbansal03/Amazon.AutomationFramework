@@ -23,25 +23,25 @@ public class ListenerImplementationClass extends ExtentManagerUtility implements
 	public void onTestStart(ITestResult result) {
 		System.out.println("inside on test start");
 		String methodName = result.getMethod().getMethodName();
-		extentTest.set(report.createTest(methodName));
-		extentTest.get().log(Status.INFO, "Test Execution Started: " + methodName);
+		//extentTest.set(report.createTest(methodName));
+		getTest().log(Status.INFO, "Test Execution Started: " + methodName);
 	}
 
 	public void onTestSuccess(ITestResult result) {
-		extentTest.get().log(Status.PASS, "Test passed: " + result.getMethod().getMethodName());
+		getTest().log(Status.PASS, "Test passed: " + result.getMethod().getMethodName());
 	}
 
 	public void onTestFailure(ITestResult result) {
 		JavaUtility jUtils = new JavaUtility();
 		String methodName = result.getMethod().getMethodName();
-		extentTest.get().log(Status.FAIL, "Test Script failed - " + methodName);
-		extentTest.get().log(Status.FAIL, result.getThrowable());
+		getTest().log(Status.FAIL, "Test Script failed - " + methodName);
+		getTest().log(Status.FAIL, result.getThrowable());
 
 		WebDriverUtility wUtils = new WebDriverUtility();
 		try {
 			String path = wUtils.takeScreenshot(BaseClass.sDriver,
 					methodName + "_" + jUtils.getSystemDataAndTimeInFormat());
-			extentTest.get().addScreenCaptureFromPath(path);
+			getTest().addScreenCaptureFromPath(path);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,12 +51,12 @@ public class ListenerImplementationClass extends ExtentManagerUtility implements
 	public void onTestSkipped(ITestResult result) {
 		JavaUtility jUtils = new JavaUtility();
 		String methodName = result.getMethod().getMethodName();
-		extentTest.get().log(Status.SKIP, methodName);
-		extentTest.get().log(Status.SKIP, result.getThrowable());
+		getTest().log(Status.SKIP, methodName);
+		getTest().log(Status.SKIP, result.getThrowable());
 		try {
 			String path = new WebDriverUtility().takeScreenshot(BaseClass.sDriver,
 					methodName + "_" + jUtils.getSystemDataAndTimeInFormat());
-			extentTest.get().addScreenCaptureFromPath(path);
+			getTest().addScreenCaptureFromPath(path);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
