@@ -77,7 +77,7 @@ public class ListenerImplementationClass implements ITestListener {
 
 				/* Creates path to captured screenshot in current jenkins job's workspace */
 				String pathToScreenshotInJob = "/job/" + jenkinsJobName + "/ws/Screenshots/" + screenshotName + ".png";
-
+				System.out.println(pathToScreenshotInJob);
 				/*
 				 * Attaches screenshot captured from Jenkins job's workspace to the extent
 				 * report
@@ -134,6 +134,7 @@ public class ListenerImplementationClass implements ITestListener {
 				/* Creates path to captured screenshot in current jenkins job's workspace */
 				String pathToScreenshotInJob = "/job/" + jenkinsJobName + "/ws/Screenshots/" + screenshotName + ".png";
 
+				System.out.println(pathToScreenshotInJob);
 				/*
 				 * Attaches screenshot captured from Jenkins job's workspace to the extent
 				 * report
