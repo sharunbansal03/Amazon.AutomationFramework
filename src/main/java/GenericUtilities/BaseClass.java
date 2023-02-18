@@ -93,8 +93,7 @@ public class BaseClass {
 		hp.hoverAccountListDrpDownAndClickSignInBtn(driver);
 		SignInPage sp = new SignInPage(driver);
 		sp.signInToTheApplication(email, password);
-		ExtentManagerUtility.createTest(m.getName());
-		
+	
 	}
 
 	/**
@@ -104,7 +103,6 @@ public class BaseClass {
 	public void amConfig() {
 		HomePage hp = new HomePage(driver);
 		hp.logoutOfApplication(driver);
-		ExtentManagerUtility.flushReport();
 	}
 
 	/**

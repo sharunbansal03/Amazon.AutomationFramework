@@ -5,16 +5,7 @@
       <![CDATA[********Launched chrome browser ********]]>
     </line>
     <line>
-      <![CDATA[********Launched chrome browser ********]]>
-    </line>
-    <line>
       <![CDATA[[STEP]: Clicked on Sign In Button]]>
-    </line>
-    <line>
-      <![CDATA[[STEP]: Clicked on Sign In Button]]>
-    </line>
-    <line>
-      <![CDATA[[STEP]: Signed into the application]]>
     </line>
     <line>
       <![CDATA[[STEP]: Signed into the application]]>
@@ -30,6 +21,15 @@
     </line>
     <line>
       <![CDATA[[STEP]: Logged out of the application]]>
+    </line>
+    <line>
+      <![CDATA[********Launched chrome browser ********]]>
+    </line>
+    <line>
+      <![CDATA[[STEP]: Clicked on Sign In Button]]>
+    </line>
+    <line>
+      <![CDATA[[STEP]: Signed into the application]]>
     </line>
     <line>
       <![CDATA[[Step]: Search for item: iphone 14 pro]]>
@@ -53,23 +53,30 @@
       <![CDATA[[STEP]: Logged out of the application]]>
     </line>
   </reporter-output>
-  <suite started-at="2023-02-18T02:53:03 IST" name="Suite" finished-at="2023-02-18T02:56:51 IST" duration-ms="227430">
+  <suite started-at="2023-02-18T13:34:15 IST" name="Suite" finished-at="2023-02-18T13:36:22 IST" duration-ms="126802">
     <groups>
       <group name="SmokeSuite">
-        <method signature="SearchProductTest.searchProductTest()[pri:0, instance:amazon.SearchProducts.TestScripts.SearchProductTest@7193666c]" name="searchProductTest" class="amazon.SearchProducts.TestScripts.SearchProductTest"/>
-        <method signature="AddProductToCartTest.addProductToCartTest()[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@2e005c4b]" name="addProductToCartTest" class="amazon.PlaceOrder.TestScripts.AddProductToCartTest"/>
+        <method signature="SearchProductTest.searchProductTest()[pri:0, instance:amazon.SearchProducts.TestScripts.SearchProductTest@5119fb47]" name="searchProductTest" class="amazon.SearchProducts.TestScripts.SearchProductTest"/>
+        <method signature="AddProductToCartTest.addProductToCartTest()[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@74e52303]" name="addProductToCartTest" class="amazon.PlaceOrder.TestScripts.AddProductToCartTest"/>
       </group> <!-- SmokeSuite -->
     </groups>
-    <test started-at="2023-02-18T02:53:03 IST" name="SearchProductsTest" finished-at="2023-02-18T02:56:32 IST" duration-ms="208433">
+    <test started-at="2023-02-18T13:34:15 IST" name="SearchProductsTest" finished-at="2023-02-18T13:35:01 IST" duration-ms="45684">
       <class name="amazon.SearchProducts.TestScripts.SearchProductTest">
-        <test-method is-config="true" signature="bcConfig()[pri:0, instance:amazon.SearchProducts.TestScripts.SearchProductTest@7193666c]" started-at="2023-02-18T02:53:03 IST" name="bcConfig" finished-at="2023-02-18T02:55:07 IST" duration-ms="123914" status="PASS">
+        <test-method is-config="true" signature="bcConfig()[pri:0, instance:amazon.SearchProducts.TestScripts.SearchProductTest@5119fb47]" started-at="2023-02-18T13:34:15 IST" name="bcConfig" finished-at="2023-02-18T13:34:31 IST" duration-ms="16199" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[********Launched chrome browser ********]]>
             </line>
           </reporter-output>
         </test-method> <!-- bcConfig -->
-        <test-method is-config="true" signature="bmConfig()[pri:0, instance:amazon.SearchProducts.TestScripts.SearchProductTest@7193666c]" started-at="2023-02-18T02:55:07 IST" name="bmConfig" finished-at="2023-02-18T02:55:54 IST" duration-ms="46407" status="PASS">
+        <test-method is-config="true" signature="bmConfig(java.lang.reflect.Method)[pri:0, instance:amazon.SearchProducts.TestScripts.SearchProductTest@5119fb47]" started-at="2023-02-18T13:34:31 IST" name="bmConfig" finished-at="2023-02-18T13:34:43 IST" duration-ms="11486" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void amazon.SearchProducts.TestScripts.SearchProductTest.searchProductTest() throws java.io.IOException]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
             <line>
               <![CDATA[[STEP]: Clicked on Sign In Button]]>
@@ -79,7 +86,7 @@
             </line>
           </reporter-output>
         </test-method> <!-- bmConfig -->
-        <test-method signature="searchProductTest()[pri:0, instance:amazon.SearchProducts.TestScripts.SearchProductTest@7193666c]" started-at="2023-02-18T02:55:54 IST" name="searchProductTest" finished-at="2023-02-18T02:56:23 IST" duration-ms="29147" status="PASS">
+        <test-method signature="searchProductTest()[pri:0, instance:amazon.SearchProducts.TestScripts.SearchProductTest@5119fb47]" started-at="2023-02-18T13:34:43 IST" name="searchProductTest" finished-at="2023-02-18T13:34:52 IST" duration-ms="9699" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[[Step]: Search for item: Women Winter Caps]]>
@@ -92,33 +99,40 @@
             </line>
           </reporter-output>
         </test-method> <!-- searchProductTest -->
-        <test-method is-config="true" signature="amConfig()[pri:0, instance:amazon.SearchProducts.TestScripts.SearchProductTest@7193666c]" started-at="2023-02-18T02:56:23 IST" name="amConfig" finished-at="2023-02-18T02:56:30 IST" duration-ms="7297" status="PASS">
+        <test-method is-config="true" signature="amConfig()[pri:0, instance:amazon.SearchProducts.TestScripts.SearchProductTest@5119fb47]" started-at="2023-02-18T13:34:52 IST" name="amConfig" finished-at="2023-02-18T13:35:00 IST" duration-ms="7368" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[[STEP]: Logged out of the application]]>
             </line>
           </reporter-output>
         </test-method> <!-- amConfig -->
-        <test-method is-config="true" signature="acConfig()[pri:0, instance:amazon.SearchProducts.TestScripts.SearchProductTest@7193666c]" started-at="2023-02-18T02:56:30 IST" name="acConfig" finished-at="2023-02-18T02:56:32 IST" duration-ms="1638" status="PASS">
+        <test-method is-config="true" signature="acConfig()[pri:0, instance:amazon.SearchProducts.TestScripts.SearchProductTest@5119fb47]" started-at="2023-02-18T13:35:00 IST" name="acConfig" finished-at="2023-02-18T13:35:01 IST" duration-ms="885" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- acConfig -->
       </class> <!-- amazon.SearchProducts.TestScripts.SearchProductTest -->
     </test> <!-- SearchProductsTest -->
-    <test started-at="2023-02-18T02:53:03 IST" name="PlaceOrderTest" finished-at="2023-02-18T02:56:51 IST" duration-ms="227430">
+    <test started-at="2023-02-18T13:35:01 IST" name="PlaceOrderTest" finished-at="2023-02-18T13:36:22 IST" duration-ms="81100">
       <class name="amazon.PlaceOrder.TestScripts.AddProductToCartTest">
-        <test-method is-config="true" signature="bsConfig()[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@2e005c4b]" started-at="2023-02-18T02:53:02 IST" name="bsConfig" finished-at="2023-02-18T02:53:03 IST" duration-ms="1706" status="PASS">
+        <test-method is-config="true" signature="bsConfig()[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@74e52303]" started-at="2023-02-18T13:34:15 IST" name="bsConfig" finished-at="2023-02-18T13:34:15 IST" duration-ms="449" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- bsConfig -->
-        <test-method is-config="true" signature="bcConfig()[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@2e005c4b]" started-at="2023-02-18T02:53:03 IST" name="bcConfig" finished-at="2023-02-18T02:54:42 IST" duration-ms="98922" status="PASS">
+        <test-method is-config="true" signature="bcConfig()[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@74e52303]" started-at="2023-02-18T13:35:01 IST" name="bcConfig" finished-at="2023-02-18T13:35:10 IST" duration-ms="9120" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[********Launched chrome browser ********]]>
             </line>
           </reporter-output>
         </test-method> <!-- bcConfig -->
-        <test-method is-config="true" signature="bmConfig()[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@2e005c4b]" started-at="2023-02-18T02:54:43 IST" name="bmConfig" finished-at="2023-02-18T02:56:02 IST" duration-ms="79057" status="PASS">
+        <test-method is-config="true" signature="bmConfig(java.lang.reflect.Method)[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@74e52303]" started-at="2023-02-18T13:35:10 IST" name="bmConfig" finished-at="2023-02-18T13:35:27 IST" duration-ms="17033" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void amazon.PlaceOrder.TestScripts.AddProductToCartTest.addProductToCartTest() throws java.io.IOException,java.lang.InterruptedException]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
             <line>
               <![CDATA[[STEP]: Clicked on Sign In Button]]>
@@ -128,7 +142,7 @@
             </line>
           </reporter-output>
         </test-method> <!-- bmConfig -->
-        <test-method signature="addProductToCartTest()[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@2e005c4b]" started-at="2023-02-18T02:56:02 IST" name="addProductToCartTest" finished-at="2023-02-18T02:56:47 IST" duration-ms="45280" status="PASS">
+        <test-method signature="addProductToCartTest()[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@74e52303]" started-at="2023-02-18T13:35:27 IST" name="addProductToCartTest" finished-at="2023-02-18T13:36:08 IST" duration-ms="41312" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[[Step]: Search for item: iphone 14 pro]]>
@@ -150,18 +164,18 @@
             </line>
           </reporter-output>
         </test-method> <!-- addProductToCartTest -->
-        <test-method is-config="true" signature="amConfig()[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@2e005c4b]" started-at="2023-02-18T02:56:47 IST" name="amConfig" finished-at="2023-02-18T02:56:49 IST" duration-ms="2369" status="PASS">
+        <test-method is-config="true" signature="amConfig()[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@74e52303]" started-at="2023-02-18T13:36:08 IST" name="amConfig" finished-at="2023-02-18T13:36:11 IST" duration-ms="3064" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[[STEP]: Logged out of the application]]>
             </line>
           </reporter-output>
         </test-method> <!-- amConfig -->
-        <test-method is-config="true" signature="acConfig()[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@2e005c4b]" started-at="2023-02-18T02:56:49 IST" name="acConfig" finished-at="2023-02-18T02:56:51 IST" duration-ms="1507" status="PASS">
+        <test-method is-config="true" signature="acConfig()[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@74e52303]" started-at="2023-02-18T13:36:11 IST" name="acConfig" finished-at="2023-02-18T13:36:22 IST" duration-ms="10564" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- acConfig -->
-        <test-method is-config="true" signature="asConfig()[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@2e005c4b]" started-at="2023-02-18T02:56:51 IST" name="asConfig" finished-at="2023-02-18T02:56:51 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="asConfig()[pri:0, instance:amazon.PlaceOrder.TestScripts.AddProductToCartTest@74e52303]" started-at="2023-02-18T13:36:22 IST" name="asConfig" finished-at="2023-02-18T13:36:23 IST" duration-ms="1548" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- asConfig -->

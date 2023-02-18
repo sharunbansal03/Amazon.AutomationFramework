@@ -13,7 +13,6 @@ import ObjectRepository.ProductDetailsPage;
 import ObjectRepository.SearchResultsPage;
 import ObjectRepository.ShoppingCartPage;
 
-@Listeners(GenericUtilities.ListenerImplementationClass.class)
 public class AddProductToCartTest extends BaseClass {
 
 	@Test(groups = "SmokeSuite")

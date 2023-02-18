@@ -8,7 +8,6 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 public class ExtentManagerUtility {
 	 
 	static ExtentReports report;
-	private static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
 
 	public static ExtentReports setUpExtentReport() {
 		JavaUtility jUtils = new JavaUtility();
@@ -28,12 +27,5 @@ public class ExtentManagerUtility {
 	public static void flushReport() {
 		report.flush();
 	}
-	
-	public static void createTest(String methodName) {
-		extentTest.set(report.createTest(methodName));
-	}
-	
-	public static ExtentTest getTest() {
-		return extentTest.get();
-	}
+
 }

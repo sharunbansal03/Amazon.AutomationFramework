@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 import GenericUtilities.BaseClass;
 import ObjectRepository.HomePage;
 
-@Listeners(GenericUtilities.ListenerImplementationClass.class)
 public class LoginToApplicationTest extends BaseClass {
 
 	@Test

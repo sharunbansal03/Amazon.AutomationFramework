@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 import GenericUtilities.BaseClass;
 import ObjectRepository.HomePage;
 
-@Listeners(GenericUtilities.ListenerImplementationClass.class)
 public class AvailableSearchCategoriesTest extends BaseClass {
 
 	@Test

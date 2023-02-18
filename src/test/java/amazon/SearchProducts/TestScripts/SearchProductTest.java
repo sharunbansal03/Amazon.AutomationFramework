@@ -11,7 +11,6 @@ import GenericUtilities.BaseClass;
 import ObjectRepository.HomePage;
 import ObjectRepository.SearchResultsPage;
 
-@Listeners(GenericUtilities.ListenerImplementationClass.class)
 public class SearchProductTest extends BaseClass {
 
 	@Test(groups = "SmokeSuite")
