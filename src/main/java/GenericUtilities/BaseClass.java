@@ -75,14 +75,6 @@ public class BaseClass {
 		else
 			BROWSER = pUtils.readDataFromPropertyFile("browser");
 
-		// If Build with parameters from jenkins, url = parameter value; else pick url
-		// from property file
-		String URL = null;
-		if (!Strings.isNullOrEmpty(System.getProperty("url")))
-			URL = System.getProperty("url");
-		else
-			URL = pUtils.readDataFromPropertyFile("url");
-
 		if (BROWSER.equalsIgnoreCase("Chrome")) {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
@@ -98,6 +90,15 @@ public class BaseClass {
 
 		wUtils.maximizeWindow(driver);
 		wUtils.waitForPageToLoad(driver);
+
+		// If Build with parameters from jenkins, url = parameter value; else pick url
+		// from property file
+		String URL = null;
+		if (!Strings.isNullOrEmpty(System.getProperty("url")))
+			URL = System.getProperty("url");
+		else
+			URL = pUtils.readDataFromPropertyFile("url");
+		Reporter.log("url: " + URL, true);
 		driver.get(URL);
 	}
 
