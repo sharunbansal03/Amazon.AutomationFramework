@@ -18,10 +18,9 @@ import com.aventstack.extentreports.Status;
 public class ListenerImplementationClass extends ExtentManagerUtility implements ITestListener {
 
 	
-	private static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
+	ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
 
 	public void onTestStart(ITestResult result) {
-		System.out.println("inside on test start");
 		String methodName = result.getMethod().getMethodName();
 		extentTest.set(report.createTest(methodName));
 		extentTest.get().log(Status.INFO, "Test Execution Started: " + methodName);
