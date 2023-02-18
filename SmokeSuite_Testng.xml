@@ -9,7 +9,8 @@
 	</groups>
 
 	<listeners>
-	<listener class-name="GenericUtilities.ListenerImplementationClass"/>
+		<listener
+			class-name="GenericUtilities.ListenerImplementationClass" />
 	</listeners>
 
 	<test name="SearchProductsTest">

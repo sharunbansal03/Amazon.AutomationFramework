@@ -2,7 +2,6 @@ package GenericUtilities;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -13,6 +12,10 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+
+import com.google.common.base.Strings;
 
 import ObjectRepository.HomePage;
 import ObjectRepository.SignInPage;
@@ -56,10 +59,29 @@ public class BaseClass {
 	 * 
 	 * @throws IOException
 	 */
+
+	@Parameters("browser")
 	@BeforeClass(groups = "SmokeSuite")
-	public void bcConfig() throws IOException {
-		String BROWSER = pUtils.readDataFromPropertyFile("browser");
-		String URL = pUtils.readDataFromPropertyFile("url");
+	public void bcConfig(@Optional String browserFromSuite) throws IOException {
+		String BROWSER = null;
+		// If parameters provided from suite file
+		if (browserFromSuite != null) {
+			BROWSER = browserFromSuite;
+		}
+		// If Build with parameters from jenkins, browser = parameter value;
+		else if (!Strings.isNullOrEmpty(System.getProperty("browser")))
+			BROWSER = System.getProperty("browser");
+		// Else pick from CommonData.properties file
+		else
+			BROWSER = pUtils.readDataFromPropertyFile("browser");
+
+		// If Build with parameters from jenkins, url = parameter value; else pick url
+		// from property file
+		String URL = null;
+		if (!Strings.isNullOrEmpty(System.getProperty("url")))
+			URL = System.getProperty("url");
+		else
+			URL = pUtils.readDataFromPropertyFile("url");
 
 		if (BROWSER.equalsIgnoreCase("Chrome")) {
 			WebDriverManager.chromedriver().setup();
@@ -93,7 +115,7 @@ public class BaseClass {
 		hp.hoverAccountListDrpDownAndClickSignInBtn(driver);
 		SignInPage sp = new SignInPage(driver);
 		sp.signInToTheApplication(email, password);
-	
+
 	}
 
 	/**
