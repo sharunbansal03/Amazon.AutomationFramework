@@ -22,8 +22,7 @@
 		</classes>
 	</test> <!-- Test -->
 
-	<test thread-count="5" parallel="tests"
-		name="UserAccountAndListsTest">
+	<test thread-count="5" parallel="tests" name="UserAccountAndListsTest">
 		<classes>
 			<class
 				name="amazon.UserAccountAndLists.TestScripts.LoginToApplicationTest" />
