@@ -2,8 +2,10 @@ package GenericUtilities;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
@@ -77,7 +79,9 @@ public class BaseClass {
 
 		if (BROWSER.equalsIgnoreCase("Chrome")) {
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--remote-allow-origins=*");
+			driver = new ChromeDriver(options);
 			sDriver = driver;
 			Reporter.log("********Launched " + BROWSER + " browser ********", true);
 		} else if (BROWSER.equalsIgnoreCase("Firefox")) {
