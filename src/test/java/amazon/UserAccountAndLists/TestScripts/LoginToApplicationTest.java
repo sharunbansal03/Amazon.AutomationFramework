@@ -18,7 +18,6 @@ public class LoginToApplicationTest extends BaseClass {
 		String actualUserName = hp.getUsernameText().getText();
 		Assert.assertTrue(actualUserName.equals(expectedUserName), "[ASSERTION FAILED]: Sign in unsuccessful");
 		Reporter.log("[ASSERTION PASSED]: SIGN IN SUCCESSFUL", true);
-		System.out.println("added a message");
 		System.out.println("added to check git conflict");
 	}
 }
