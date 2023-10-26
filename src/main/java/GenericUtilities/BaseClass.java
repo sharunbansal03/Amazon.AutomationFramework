@@ -8,8 +8,11 @@ import java.net.URL;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -93,9 +96,10 @@ public class BaseClass {
 			SERVER = pUtils.readDataFromPropertyFile("server");
 		
 		if (SERVER.equalsIgnoreCase("remote")) {
+			System.out.println("************ SETTING UP REMOTE BROWSER ************");
 			setUpRemoteWebDriver(BROWSER);
 		} else if (SERVER.equalsIgnoreCase("local")) {
-			System.out.println("inside local");
+			System.out.println("************ SETTING UP LOCAL BROWSER ************");
 			setUpLocalWebDriver(BROWSER);
 		}
 
@@ -143,14 +147,34 @@ public class BaseClass {
 		URL hubURL = new URL("http://192.168.1.29:4444/");
 		DesiredCapabilities cap = new DesiredCapabilities();
 
-		if (BROWSER.equalsIgnoreCase("Chrome") || BROWSER.equalsIgnoreCase("Firefox")
-				|| BROWSER.equalsIgnoreCase("MicrosoftEdge")) {
+		if (BROWSER.equalsIgnoreCase("Chrome")) {
 			cap.setBrowserName(BROWSER);
 			cap.setPlatform(Platform.WINDOWS);
+			ChromeOptions options = new ChromeOptions();
+			options.merge(cap);
 			driver = new RemoteWebDriver(hubURL, cap);
 			sDriver = driver;
 			Reporter.log("********Launched " + BROWSER + " browser ********", true);
-		} else if (BROWSER.equalsIgnoreCase("internet explorer")) {
+		} else if (BROWSER.equalsIgnoreCase("Firefox")) {
+			cap.setBrowserName(BROWSER);
+			cap.setPlatform(Platform.WINDOWS);
+			FirefoxOptions options = new FirefoxOptions();
+			options.merge(cap);
+			driver = new RemoteWebDriver(hubURL, cap);
+			sDriver = driver;
+			Reporter.log("********Launched " + BROWSER + " browser ********", true);
+		} 
+		else if (BROWSER.equalsIgnoreCase("MicrosoftEdge")) {
+			cap.setBrowserName(BROWSER);
+			cap.setPlatform(Platform.WINDOWS);
+			EdgeOptions op = new EdgeOptions();
+			op.merge(cap);
+			driver = new RemoteWebDriver(hubURL, cap);
+			sDriver = driver;
+			Reporter.log("********Launched " + BROWSER + " browser ********", true);
+		} 
+		
+		else if (BROWSER.equalsIgnoreCase("internet explorer")) {
 			cap.setBrowserName(BROWSER);
 			cap.setPlatform(Platform.WINDOWS);
 			InternetExplorerOptions ieOptions = new InternetExplorerOptions();
