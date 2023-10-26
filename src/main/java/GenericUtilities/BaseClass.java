@@ -152,14 +152,12 @@ public class BaseClass {
 			cap.setPlatform(Platform.WINDOWS);
 			ChromeOptions options = new ChromeOptions();
 			options.merge(cap);
-			driver = new RemoteWebDriver(hubURL, cap);
+			driver = new RemoteWebDriver(hubURL, options);
 			sDriver = driver;
 			Reporter.log("********Launched " + BROWSER + " browser ********", true);
 		} else if (BROWSER.equalsIgnoreCase("Firefox")) {
 			cap.setBrowserName(BROWSER);
 			cap.setPlatform(Platform.WINDOWS);
-			FirefoxOptions options = new FirefoxOptions();
-			options.merge(cap);
 			driver = new RemoteWebDriver(hubURL, cap);
 			sDriver = driver;
 			Reporter.log("********Launched " + BROWSER + " browser ********", true);
@@ -167,8 +165,6 @@ public class BaseClass {
 		else if (BROWSER.equalsIgnoreCase("MicrosoftEdge")) {
 			cap.setBrowserName(BROWSER);
 			cap.setPlatform(Platform.WINDOWS);
-			EdgeOptions op = new EdgeOptions();
-			op.merge(cap);
 			driver = new RemoteWebDriver(hubURL, cap);
 			sDriver = driver;
 			Reporter.log("********Launched " + BROWSER + " browser ********", true);

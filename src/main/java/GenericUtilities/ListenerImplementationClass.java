@@ -40,12 +40,6 @@ public class ListenerImplementationClass implements ITestListener {
 		PropertyFileUtility pUtils = new PropertyFileUtility();
 		WebDriverUtility wUtils = new WebDriverUtility();
 		String environment = null;
-		try {
-			environment = pUtils.readDataFromPropertyFile("server");
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 
 		// TODO Auto-generated method stub
 		String methodName = result.getMethod().getMethodName();
@@ -53,16 +47,11 @@ public class ListenerImplementationClass implements ITestListener {
 		extentTestThreadSafe.get().log(Status.FAIL, result.getThrowable());
 
 		String screenshotName = methodName + "-" + jUtils.getSystemDataAndTimeInFormat();
-		try {
 
-			if (environment.equalsIgnoreCase("local")) {
-				/*
-				 * Captures screenshot in 'Screenshots' folder and attaches it to extent report
-				 * when executed on local system
-				 */
-				String path = wUtils.takeScreenshot(BaseClass.sDriver, screenshotName);
-				extentTestThreadSafe.get().addScreenCaptureFromPath(path);
-			} else if (environment.equalsIgnoreCase("remote")) {
+		try {
+			// executing from jenkins
+			if (System.getProperty("server") != null) {
+				environment = System.getProperty("server");
 
 				/* Creates screenshot in 'Screenshots' folder of project */
 				wUtils.takeScreenshot(BaseClass.sDriver, screenshotName);
@@ -78,11 +67,17 @@ public class ListenerImplementationClass implements ITestListener {
 				/* Creates path to captured screenshot in current jenkins job's workspace */
 				String pathToScreenshotInJob = "/job/" + jenkinsJobName + "/ws/Screenshots/" + screenshotName + ".png";
 				System.out.println(pathToScreenshotInJob);
+
 				/*
 				 * Attaches screenshot captured from Jenkins job's workspace to the extent
 				 * report
 				 */
 				extentTestThreadSafe.get().addScreenCaptureFromPath(pathToScreenshotInJob);
+			} else {
+				// executing from local machine
+				
+				String path = wUtils.takeScreenshot(BaseClass.sDriver, screenshotName);
+				extentTestThreadSafe.get().addScreenCaptureFromPath(path);
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -96,12 +91,6 @@ public class ListenerImplementationClass implements ITestListener {
 		PropertyFileUtility pUtils = new PropertyFileUtility();
 		WebDriverUtility wUtils = new WebDriverUtility();
 		String environment = null;
-		try {
-			environment = pUtils.readDataFromPropertyFile("server");
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 
 		// TODO Auto-generated method stub
 		String methodName = result.getMethod().getMethodName();
@@ -110,15 +99,9 @@ public class ListenerImplementationClass implements ITestListener {
 
 		String screenshotName = methodName + "-" + jUtils.getSystemDataAndTimeInFormat();
 		try {
-
-			if (environment.equalsIgnoreCase("local")) {
-				/*
-				 * Captures screenshot in 'Screenshots' folder and attaches it to extent report
-				 * when executed on local system
-				 */
-				String path = wUtils.takeScreenshot(BaseClass.sDriver, screenshotName);
-				extentTestThreadSafe.get().addScreenCaptureFromPath(path);
-			} else if (environment.equalsIgnoreCase("remote")) {
+			// executing from jenkins
+			if (System.getProperty("server") != null) {
+				environment = System.getProperty("server");
 
 				/* Creates screenshot in 'Screenshots' folder of project */
 				wUtils.takeScreenshot(BaseClass.sDriver, screenshotName);
@@ -133,18 +116,24 @@ public class ListenerImplementationClass implements ITestListener {
 
 				/* Creates path to captured screenshot in current jenkins job's workspace */
 				String pathToScreenshotInJob = "/job/" + jenkinsJobName + "/ws/Screenshots/" + screenshotName + ".png";
-
 				System.out.println(pathToScreenshotInJob);
+
 				/*
 				 * Attaches screenshot captured from Jenkins job's workspace to the extent
 				 * report
 				 */
 				extentTestThreadSafe.get().addScreenCaptureFromPath(pathToScreenshotInJob);
+			} else {
+				
+				// executing from local machine
+				String path = wUtils.takeScreenshot(BaseClass.sDriver, screenshotName);
+				extentTestThreadSafe.get().addScreenCaptureFromPath(path);
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
