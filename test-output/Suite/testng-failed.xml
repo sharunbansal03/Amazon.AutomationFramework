@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="2" parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="2" parallel="tests" name="FirefoxExecutionSuite(failed)">
-    <parameter name="browser" value="firefox"/>
+<suite parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="GenericUtilities.ListenerImplementationClass"/>
+  </listeners>
+  <test thread-count="5" parallel="tests" name="PlaceOrderTest(failed)">
+    <classes>
+      <class name="amazon.PlaceOrder.TestScripts.AddProductToCartTest">
+        <methods>
+          <include name="bcConfig"/>
+          <include name="addProductToCartTest"/>
+          <include name="acConfig"/>
+          <include name="bsConfig"/>
+          <include name="asConfig"/>
+          <include name="amConfig"/>
+          <include name="bmConfig"/>
+        </methods>
+      </class> <!-- amazon.PlaceOrder.TestScripts.AddProductToCartTest -->
+    </classes>
+  </test> <!-- PlaceOrderTest(failed) -->
+  <test thread-count="5" parallel="tests" name="UserAccountAndListsTest(failed)">
     <classes>
       <class name="amazon.UserAccountAndLists.TestScripts.LoginToApplicationTest">
         <methods>
@@ -16,21 +33,31 @@
         </methods>
       </class> <!-- amazon.UserAccountAndLists.TestScripts.LoginToApplicationTest -->
     </classes>
-  </test> <!-- FirefoxExecutionSuite(failed) -->
-  <test thread-count="2" parallel="tests" name="ChromeExecutionSuite(failed)">
-    <parameter name="browser" value="chrome"/>
+  </test> <!-- UserAccountAndListsTest(failed) -->
+  <test thread-count="5" parallel="tests" name="SearchProductsTest(failed)">
     <classes>
-      <class name="amazon.UserAccountAndLists.TestScripts.LoginToApplicationTest">
+      <class name="amazon.SearchProducts.TestScripts.AvailableSearchCategoriesTest">
         <methods>
+          <include name="bcConfig"/>
+          <include name="acConfig"/>
+          <include name="availableCategoriesTest"/>
+          <include name="bsConfig"/>
+          <include name="asConfig"/>
+          <include name="amConfig"/>
+          <include name="bmConfig"/>
+        </methods>
+      </class> <!-- amazon.SearchProducts.TestScripts.AvailableSearchCategoriesTest -->
+      <class name="amazon.SearchProducts.TestScripts.SearchProductTest">
+        <methods>
+          <include name="searchProductTest"/>
           <include name="bcConfig"/>
           <include name="acConfig"/>
           <include name="bsConfig"/>
           <include name="asConfig"/>
-          <include name="loginIntoAppTest"/>
           <include name="amConfig"/>
           <include name="bmConfig"/>
         </methods>
-      </class> <!-- amazon.UserAccountAndLists.TestScripts.LoginToApplicationTest -->
+      </class> <!-- amazon.SearchProducts.TestScripts.SearchProductTest -->
     </classes>
-  </test> <!-- ChromeExecutionSuite(failed) -->
+  </test> <!-- SearchProductsTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -2,11 +2,18 @@ package GenericUtilities;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
 
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -21,7 +28,6 @@ import com.google.common.base.Strings;
 
 import ObjectRepository.HomePage;
 import ObjectRepository.SignInPage;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
  * This class contains Basic configurations for test scripts
@@ -65,7 +71,10 @@ public class BaseClass {
 	@Parameters("browser")
 	@BeforeClass(groups = "SmokeSuite")
 	public void bcConfig(@Optional String browserFromSuite) throws IOException {
+
 		String BROWSER = null;
+		String SERVER = null;
+
 		// If parameters provided from suite file
 		if (browserFromSuite != null) {
 			BROWSER = browserFromSuite;
@@ -77,20 +86,18 @@ public class BaseClass {
 		else
 			BROWSER = pUtils.readDataFromPropertyFile("browser");
 
-		if (BROWSER.equalsIgnoreCase("Chrome")) {
-			WebDriverManager.chromedriver().setup();
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--remote-allow-origins=*");
-			driver = new ChromeDriver(options);
-			sDriver = driver;
-			Reporter.log("********Launched " + BROWSER + " browser ********", true);
-		} else if (BROWSER.equalsIgnoreCase("Firefox")) {
-			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
-			sDriver = driver;
-			Reporter.log("********Launched " + BROWSER + " browser ********", true);
-		} else
-			System.out.println("Invalid browser");
+		// if server=remote or local specified from jenkins pick that , else pick from CommonData.properties file
+		if(System.getProperty("server")!=null) {
+			SERVER = System.getProperty("server");
+		}else
+			SERVER = pUtils.readDataFromPropertyFile("server");
+		
+		if (SERVER.equalsIgnoreCase("remote")) {
+			setUpRemoteWebDriver(BROWSER);
+		} else if (SERVER.equalsIgnoreCase("local")) {
+			System.out.println("inside local");
+			setUpLocalWebDriver(BROWSER);
+		}
 
 		wUtils.maximizeWindow(driver);
 		wUtils.waitForPageToLoad(driver);
@@ -102,8 +109,58 @@ public class BaseClass {
 			URL = System.getProperty("url");
 		else
 			URL = pUtils.readDataFromPropertyFile("url");
+		
 		Reporter.log("url: " + URL, true);
+		// LAUNCH APPLICATION
 		driver.get(URL);
+	}
+
+	public void setUpLocalWebDriver(String BROWSER) {
+		System.out.println("inside method");
+		if (BROWSER.equalsIgnoreCase("Chrome")) {
+			driver = new ChromeDriver();
+			sDriver = driver;
+			Reporter.log("********Launched " + BROWSER + " browser ********", true);
+		} else if (BROWSER.equalsIgnoreCase("Firefox")) {
+			driver = new FirefoxDriver();
+			sDriver = driver;
+			Reporter.log("********Launched " + BROWSER + " browser ********", true);
+		} else if (BROWSER.equalsIgnoreCase("MicrosoftEdge")) {
+			driver = new EdgeDriver();
+			sDriver = driver;
+			Reporter.log("********Launched " + BROWSER + " browser ********", true);
+		} else if (BROWSER.equalsIgnoreCase("internet explorer")) {
+			InternetExplorerOptions ieOptions = new InternetExplorerOptions();
+			ieOptions.attachToEdgeChrome();
+			driver = new InternetExplorerDriver(ieOptions);
+			sDriver = driver;
+			Reporter.log("********Launched " + BROWSER + " browser ********", true);
+		} else
+			System.out.println("Invalid browser");
+	}
+
+	public void setUpRemoteWebDriver(String BROWSER) throws MalformedURLException {
+		URL hubURL = new URL("http://192.168.1.29:4444/");
+		DesiredCapabilities cap = new DesiredCapabilities();
+
+		if (BROWSER.equalsIgnoreCase("Chrome") || BROWSER.equalsIgnoreCase("Firefox")
+				|| BROWSER.equalsIgnoreCase("MicrosoftEdge")) {
+			cap.setBrowserName(BROWSER);
+			cap.setPlatform(Platform.WINDOWS);
+			driver = new RemoteWebDriver(hubURL, cap);
+			sDriver = driver;
+			Reporter.log("********Launched " + BROWSER + " browser ********", true);
+		} else if (BROWSER.equalsIgnoreCase("internet explorer")) {
+			cap.setBrowserName(BROWSER);
+			cap.setPlatform(Platform.WINDOWS);
+			InternetExplorerOptions ieOptions = new InternetExplorerOptions();
+			ieOptions.attachToEdgeChrome();
+			ieOptions.merge(cap);
+			driver = new RemoteWebDriver(hubURL, ieOptions);
+			sDriver = driver;
+			Reporter.log("********Launched " + BROWSER + " browser ********", true);
+		} else
+			System.out.println("Invalid browser");
 	}
 
 	/**
